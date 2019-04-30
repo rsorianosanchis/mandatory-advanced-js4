@@ -15,16 +15,26 @@ export function GameTable (){
   )
 }
 function Column (props){
+  //
   const [row] = useState(Array(6).fill(null));
+  //
+  const [filledRows,fillRow] = useState([]);
+  const [selectedColumn,updateSelectedColumn] = useState(null);
   //console.log(row);
-  const puttingTab = (e) =>{
+  const addTab = (e) =>{
+    let value = 0;
     console.log(e.target);
+    e.preventDefault();
+    value = e.target.getAttribute('column') ;
+    console.log(`Selected column är ${value}`);
+  
+
   }
   return(
     <div className='column'>
       {row.map((row,index)=>
         <div key= {index} className='row' >
-          <div className='tab' column={props.posColumn} onClick={puttingTab} >
+          <div className='tab' column={props.posColumn} onClick={addTab} >
         </div>
       </div>)}
     </div>

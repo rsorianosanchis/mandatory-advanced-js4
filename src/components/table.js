@@ -11,9 +11,9 @@ export function GameTable (){
            <Column key={index} posColumn={index}/>
          )})}
     </div>
-
   )
 }
+/***********************************************************************/
 function Column (props){
   //
   const [row] = useState(Array(6).fill(null));
@@ -52,10 +52,10 @@ function Column (props){
 
   const addTab = (e) =>{
     e.preventDefault();
-    changeGamer();
+
     let colNum = null;
     let rowNum = null;
-    //console.log(e.target);
+    console.log(e.target);
     colNum = parseInt(e.target.getAttribute('column')) ;
     console.log(filledRowsCol0);
     //console.log(`Selected column är ${colNum}`);
@@ -66,13 +66,14 @@ function Column (props){
         console.log(`putting Tab in column 0`);
         console.log(filledRowsCol0.length);
         if (filledRowsCol0.length < 6 ) {
-            addNewTabOnCol(filledRowsCol0,fillRowCol0,spelare)
+            addNewTabOnCol(filledRowsCol0,fillRowCol0,spelare);
+            changeGamer();
             console.log('dentroo de if');
         }
         rowNum = filledRowsCol0.length;
-        if(filledRowsCol0.length === 0){
-          changeGamer();
-        }
+        // if(filledRowsCol0.length === 0){
+        //   changeGamer();
+        // }
         console.log(rowNum);
         console.log(filledRowsCol0);
         break;
@@ -81,6 +82,7 @@ function Column (props){
       default:
       // ingen winns , table full av Tabs
     }
+
   }
   //
   const paintTab = (posCol,posRad)=>{

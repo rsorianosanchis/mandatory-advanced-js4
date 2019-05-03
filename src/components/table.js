@@ -22,12 +22,12 @@ function Column (props){
   const [colorTab,setColorTab]= useState('yellow');
   //
   const [filledRowsCol0,fillRowCol0] = useState([]);
-  const [filledRowsCol1,fillRowCol1] = useState([]);
-  const [filledRowsCol2,fillRowCol2] = useState([]);
-  const [filledRowsCol3,fillRowCol3] = useState([]);
-  const [filledRowsCol4,fillRowCol4] = useState([]);
-  const [filledRowsCol5,fillRowCol5] = useState([]);
-  const [filledRowsCol6,fillRowCol6] = useState([]);
+  // const [filledRowsCol1,fillRowCol1] = useState([]);
+  // const [filledRowsCol2,fillRowCol2] = useState([]);
+  // const [filledRowsCol3,fillRowCol3] = useState([]);
+  // const [filledRowsCol4,fillRowCol4] = useState([]);
+  // const [filledRowsCol5,fillRowCol5] = useState([]);
+  // const [filledRowsCol6,fillRowCol6] = useState([]);
   //const [selectedColumn,updateSelectedColumn] = useState(null);
   //console.log(row);
   //
@@ -40,7 +40,6 @@ function Column (props){
       setColorTab('yellow');
     }
     console.log(`spelare is ${spelare} och color is ${colorTab}`);
-    console.log();
   }
   //
   const addNewTabOnCol = (arr,updateArr,newTab)=>{
@@ -57,25 +56,35 @@ function Column (props){
     let rowNum = null;
     console.log(e.target);
     colNum = parseInt(e.target.getAttribute('column')) ;
+
     console.log(filledRowsCol0);
-    //console.log(`Selected column är ${colNum}`);
+    console.log(`Selected column är ${colNum}`);
     //console.log(typeof(value));
-    //console.log(`rowNum es ugual a: ${rowNum}`);
+
     switch (colNum) {
       case 0:
+        //testing i col 1 (index0)
+        rowNum = filledRowsCol0.length;
+        console.log(`row att måla är ${rowNum}`);
         console.log(`putting Tab in column 0`);
         console.log(filledRowsCol0.length);
         if (filledRowsCol0.length < 6 ) {
             addNewTabOnCol(filledRowsCol0,fillRowCol0,spelare);
             changeGamer();
-            console.log('dentroo de if');
         }
-        rowNum = filledRowsCol0.length;
-        // if(filledRowsCol0.length === 0){
-        //   changeGamer();
-        // }
-        console.log(rowNum);
         console.log(filledRowsCol0);
+        /* nu kommer att måla den korrekta Tab
+        nu vi borde hämta igenom DOM den korrekta div med anväding
+        ovanfor referenser colNum och rowNum.
+        När Row är 0 vi måste måla den sista då kommer vi att fixa det.
+        */
+        let transformPosition = 6-rowNum;
+        console.log(transformPosition);
+        let tabAtPaint = document.getElementsByClassName(`tab ${rowNum}${colNum}`);
+          console.log(tabAtPaint);
+
+
+
         break;
       case 1:
         break;
@@ -85,18 +94,23 @@ function Column (props){
 
   }
   //
-  const paintTab = (posCol,posRad)=>{
-    const selTab = document.querySelector
-
-  }
+  // const paintTab = (posCol,posRad)=>{
+  // const selTab = document.querySelector
+  //
+  // }
   //
   return(
     <div className='column'>
       {row.map((inget,index)=>
-        <div key= {index} className='row' >
-          <div className='tab' column={props.posColumn} onClick={addTab} >
-        </div>
-      </div>)}
+        {let ref = `tab ${index}${props.posColumn}`;
+          return(
+            <div key= {index} className='row' >
+              <div className={ref} column={props.posColumn} onClick={addTab}></div>
+            </div>)
+          }
+        )
+      }
     </div>
   )
 }
+//<div className={ref} column={props.posColumn} onClick={addTab} ></div>

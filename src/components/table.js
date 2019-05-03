@@ -13,7 +13,7 @@ export function GameTable (){
     </div>
   )
 }
-/***********************************************************************/
+/***ALLA MINA TESTINGAR ÄR NUVARANDE BARA PÅ COL 1 (INDEX 0)**************/
 function Column (props){
   //
   const [row] = useState(Array(6).fill(null));

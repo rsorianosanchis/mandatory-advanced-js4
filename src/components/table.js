@@ -69,6 +69,7 @@ function Column (props){
         console.log(`putting Tab in column 0`);
         console.log(filledRowsCol0.length);
         if (filledRowsCol0.length < 6 ) {
+            console.log('inne');
             addNewTabOnCol(filledRowsCol0,fillRowCol0,spelare);
             changeGamer();
         }
@@ -80,8 +81,14 @@ function Column (props){
         */
         let transformPosition = 6-rowNum;
         console.log(transformPosition);
-        let tabAtPaint = document.getElementsByClassName(`tab ${rowNum}${colNum}`);
-          console.log(tabAtPaint);
+        let tabAtPaint = document.getElementsByClassName(`tab ${transformPosition}${colNum}`);
+        console.log(tabAtPaint);
+        let tabAtPaintDiv = tabAtPaint[0];
+      //  tabAtPaintDiv.color ='red';
+        console.log(tabAtPaintDiv);
+        //tabAtPaintDiv.style = '{{color: red}}';
+        /*************/
+
 
 
 
@@ -105,7 +112,7 @@ function Column (props){
         {let ref = `tab ${index}${props.posColumn}`;
           return(
             <div key= {index} className='row' >
-              <div className={ref} column={props.posColumn} onClick={addTab}></div>
+              <div className={ref} column={props.posColumn} onClick={addTab}>{ref}</div>
             </div>)
           }
         )
@@ -113,4 +120,3 @@ function Column (props){
     </div>
   )
 }
-//<div className={ref} column={props.posColumn} onClick={addTab} ></div>

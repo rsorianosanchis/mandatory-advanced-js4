@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useRef} from 'react';
 import './colum.css';
 
 /* Table construction */
@@ -20,6 +20,7 @@ function Column (props){
   //
   const [spelare,setSpelare] = useState(0);
   const [colorTab,setColorTab]= useState('yellow');
+  const tabRef = useRef(null);
   const [testColor,setTestColor]= useState('');
   //
   const [filledRowsCol0,fillRowCol0] = useState([]);
@@ -66,7 +67,7 @@ function Column (props){
       case 0:
         //testing i col 1 (index0)
         rowNum = filledRowsCol0.length;
-        console.log(`row att måla är ${rowNum}`);
+        console.log(`column har ${rowNum} rows filled`);
         console.log(`putting Tab in column 0`);
         console.log(filledRowsCol0.length);
         if (filledRowsCol0.length < 6 ) {
@@ -81,12 +82,13 @@ function Column (props){
         När Row är 0 vi måste måla den sista då kommer vi att fixa det.
         */
         let transformPosition = 6-rowNum;
-        console.log(transformPosition);
+        console.log('row att måla' +' '+ transformPosition);
         let tabAtPaint = document.getElementsByClassName(`tab ${transformPosition}${colNum}`);
         console.log(tabAtPaint);
         let tabAtPaintDiv = tabAtPaint[0];
         //tabAtPaint.className.add = 'red'
         console.log(tabAtPaintDiv);
+        console.log(tabRef);
 
         /*************/
         break;
@@ -105,6 +107,7 @@ function Column (props){
     }
 
   }
+
   //
   // const paintTab = (posCol,posRad)=>{
   // const selTab = document.querySelector
@@ -114,10 +117,10 @@ function Column (props){
   return(
     <div className='column'>
       {row.map((inget,index)=>
-        {let refi = `tab ${index}${props.posColumn}`;
+        {let ref = `tab ${index}${props.posColumn}`;
           return(
             <div key= {index} className='row' >
-              <div className={refi}  column={props.posColumn} onClick={addTab}>{refi}</div>
+              <div className={ref} ref={tabRef} column={props.posColumn} onClick={addTab}>{ref}</div>
             </div>)
           }
         )

@@ -20,6 +20,7 @@ function Column (props){
   //
   const [spelare,setSpelare] = useState(0);
   const [colorTab,setColorTab]= useState('yellow');
+  const [testColor,setTestColor]= useState('');
   //
   const [filledRowsCol0,fillRowCol0] = useState([]);
   // const [filledRowsCol1,fillRowCol1] = useState([]);
@@ -84,9 +85,9 @@ function Column (props){
         let tabAtPaint = document.getElementsByClassName(`tab ${transformPosition}${colNum}`);
         console.log(tabAtPaint);
         let tabAtPaintDiv = tabAtPaint[0];
-      //  tabAtPaintDiv.color ='red';
+        //tabAtPaint.className.add = 'red'
         console.log(tabAtPaintDiv);
-        //tabAtPaintDiv.style = '{{color: red}}';
+
         /*************/
         break;
       case 1:
@@ -113,10 +114,10 @@ function Column (props){
   return(
     <div className='column'>
       {row.map((inget,index)=>
-        {let ref = `tab ${index}${props.posColumn}`;
+        {let refi = `tab ${index}${props.posColumn}`;
           return(
             <div key= {index} className='row' >
-              <div className={ref} column={props.posColumn} onClick={addTab}>{ref}</div>
+              <div className={refi}  column={props.posColumn} onClick={addTab}>{refi}</div>
             </div>)
           }
         )

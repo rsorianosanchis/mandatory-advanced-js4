@@ -1,0 +1,17 @@
+
+.bord{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 350px;
+
+}
+
+.tab{
+  width: 48px;
+  height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 1px solid black;
+}

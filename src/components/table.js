@@ -3,10 +3,12 @@ import './colum.css';
 
 /* Table construction */
 export function GameTable (){
-  const [col]= useState(Array(7).fill(null))
+  //const grid = Array(7).fill(null).map(x => Array(6).fill(<div className= 'tab' ></div>));
+  const grid = Array(7).fill(null).map(x => Array(6).fill(null));
+  console.log(grid);
   return(
     <div className='gametable'>
-      {col.map((inget,index)=>{
+      {grid.map((inget,index)=>{
          return(
            <Column key={index} posColumn={index}/>
          )})}

@@ -21,7 +21,7 @@ export function TableGame (){
       for (let rad = vgrid.length-1; rad >=0; rad--){
         if(!vgrid[rad][selectedCol].color){
           const vspelare = spelare === 'red'?'yellow':'red';
-          vgrid[rad][selectedCol].color = vinnare;
+          vgrid[rad][selectedCol].color = spelare;
           if(!vinnare){
             kontrollVinnare();
           }

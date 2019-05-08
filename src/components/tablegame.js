@@ -83,6 +83,7 @@ export function TableGame (){
         }
       }
     }
+    //
     const handleReset = ()=>{
       console.log('reset');
       updateGrid([
@@ -97,7 +98,7 @@ export function TableGame (){
         setVinnare(false);
         bytSpelare('red');
     }
-
+    //
     const slutSpel = ()=>{
       addLekar(0);
       setVinnare(true);

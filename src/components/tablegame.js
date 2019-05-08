@@ -1,4 +1,4 @@
-import React,{Component,useState } from "react";
+import React,{useState} from "react";
 import './style.css';
 
 export function TableGame (){
@@ -84,12 +84,23 @@ export function TableGame (){
       }
     }
     const handleReset = ()=>{
+      console.log('reset');
+      updateGrid([
+          [{}, {}, {}, {}, {}, {}, {}],
+          [{}, {}, {}, {}, {}, {}, {}],
+          [{}, {}, {}, {}, {}, {}, {}],
+          [{}, {}, {}, {}, {}, {}, {}],
+          [{}, {}, {}, {}, {}, {}, {}],
+          [{}, {}, {}, {}, {}, {}, {}]
+        ]);
+        addLekar(0);
+        setVinnare(false);
+        bytSpelare('red');
     }
 
     const slutSpel = ()=>{
       addLekar(0);
       setVinnare(true);
-      //bytSpelare({spelare});
     }
     //
     return(

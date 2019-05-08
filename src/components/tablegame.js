@@ -34,17 +34,71 @@ export function TableGame (){
     }
     //
     const kontrollVinnare = ()=>{
-
+      for (let rad = 0; rad < grid.length; rad++) {
+        for (let col = 0; col < grid[rad].length; col++) {
+          if (grid[rad][col].color && grid[rad][col + 3]) {
+            if (
+              grid[rad][col].color === spelare &&
+              grid[rad][col + 1].color === spelare &&
+              grid[rad][col + 2].color === spelare &&
+              grid[rad][col + 3].color === spelare
+            ) {
+              slutSpel();
+              return;
+            }
+          }
+          if (grid[rad][col].color && grid[rad + 3]) {
+            if (
+              grid[rad][col].color === spelare &&
+              grid[rad + 1][col].color === spelare &&
+              grid[rad + 2][col].color === spelare &&
+              grid[rad + 3][col].color === spelare
+            ) {
+              slutSpel();
+              return;
+            }
+          }
+          if (grid[rad][col].color && grid[rad + 3] && grid[rad][col + 3]) {
+            if (
+              grid[rad][col].color === spelare &&
+              grid[rad + 1][col + 1].color === spelare &&
+              grid[rad + 2][col + 2].color === spelare &&
+              grid[rad + 3][col + 3].color === spelare
+            ) {
+              slutSpel();
+              return;
+            }
+          }
+          if (grid[rad][col].color && grid[rad + 3] && grid[rad][col - 3]) {
+            if (
+              grid[rad][col].color === spelare &&
+              grid[rad + 1][col - 1].color === spelare &&
+              grid[rad + 2][col - 2].color === spelare &&
+              grid[rad + 3][col - 3].color === spelare
+            ) {
+              slutSpel();
+              return;
+            }
+          }
+        }
+      }
     }
     const handleReset = ()=>{
+    }
+
+    const slutSpel = ()=>{
+      addLekar(0);
+      setVinnare(true);
+      //bytSpelare({spelare});
     }
     //
     return(
       <div>
         <h1>4 i rad</h1>
         <h2>{vinnare
-              ?`vinnare är spelare med ${spelare} tabar`
+              ?`vinnare är spelare med ${spelare==='red'?'yellow':'red'} tabar`
               :null}
+              {antalLekar === 42 && !vinnare?'ingen vinns':null}
         </h2>
           <div className='bord'>
           {grid.map((column,indexRad)=>column.map((rad,indexCol)=>{

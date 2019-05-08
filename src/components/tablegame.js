@@ -16,17 +16,15 @@ export function TableGame (){
     const [antalLekar,addLekar]= useState(0);
     //
     const handleClick = (selectedCol)=>{
-      const vgrid = [...grid];
-      console.log(vgrid);
-      for (let rad = vgrid.length-1; rad >=0; rad--){
-        if(!vgrid[rad][selectedCol].color){
+      for (let rad = grid.length-1; rad >=0; rad--){
+        if(!grid[rad][selectedCol].color){
           const vspelare = spelare === 'red'?'yellow':'red';
-          vgrid[rad][selectedCol].color = spelare;
+          grid[rad][selectedCol].color = spelare;
           if(!vinnare){
             kontrollVinnare();
           }
           bytSpelare(vspelare);
-          updateGrid(vgrid);
+          updateGrid(grid);
           addLekar(antalLekar+1);
           return;
         }
